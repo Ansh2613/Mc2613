@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Minecraft Server</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minecraft Server Rules</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a url('https://wallpapercave.com/wp/wp2788430.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-top: 20px;
+      color: #00ffff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #0ff;
+      }
+      to {
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+      }
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #0ff;
+      border-bottom: 2px solid #0ff;
+      padding-bottom: 5px;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    footer {
+      text-align: center;
+      color: #888;
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      li {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>🔥 My Minecraft Server</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#plugins">Plugins</a>
-      <a href="#status">Status</a>
-      <a href="#start">Start Server</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="about">
-      <h2>🌍 Server Info</h2>
-      <p><strong>Java IP:</strong> <span id="java-ip">mc1524209.fmcs.cloud</span> <button onclick="copyToClipboard('java-ip')">📋 Copy</button></p>
-      <p><strong>Bedrock IP:</strong> <span id="bedrock-ip">mc1524209.fmcs.cloud</span> <button onclick="copyToClipboard('bedrock-ip')">📋 Copy</button></p>
-      <p><strong>Version:</strong> Java 1.20.1 / Bedrock (via Geyser)</p>
-      <p><strong>Public Page:</strong> <a href="https://freemcserver.net/server/1524209" target="_blank">View Server</a></p>
-    </section>
+  <h1>⚠️ Minecraft Server Rules ⚠️</h1>
 
-    <section id="status">
-      <h2>📊 Server Status</h2>
-      <div id="server-status">Checking status...</div>
-      <div id="player-count"></div>
-    </section>
+  <h2>🔒 Necessary Rules</h2>
+  <ol>
+    <li>No PvP unless both players agree.</li>
+    <li>Do not destroy buildings unless they are yours.</li>
+    <li>Do not destroy villages.</li>
+    <li>Do not place unnecessary or random blocks.</li>
+    <li>Do not go to the End or kill the Ender Dragon without admin permission.</li>
+    <li>No abusing or offensive language.</li>
+    <li>No griefing: do not damage or steal other players' creations.</li>
+    <li>No hacking or cheating (e.g., X-ray, kill aura, etc.).</li>
+    <li>No duplication glitches or exploits.</li>
+    <li>No lag machines or excessive auto-farms.</li>
+    <li>No spamming chat, commands, or sounds.</li>
+    <li>No impersonating staff members.</li>
+    <li>Respect protected areas and claims.</li>
+    <li>Follow staff instructions — their decisions are final.</li>
+  </ol>
 
-    <section id="start">
-      <h2>🔧 Start Server</h2>
-      <p>Enter your FreeMcServer Username:</p>
-      <input type="text" id="username" placeholder="e.g. ansh2613">
-      <button onclick="generateLink()">Generate Start Link</button>
-      <p id="start-link"></p>
-    </section>
+  <h2>⚙️ Optional Rules</h2>
+  <ol>
+    <li>Be respectful and friendly to others.</li>
+    <li>Use appropriate language in public chat.</li>
+    <li>Prefer English in public chat for moderation.</li>
+    <li>No advertising other servers or Discords.</li>
+    <li>No AFK machines or auto-clickers.</li>
+    <li>Don’t scam or trick other players in trades.</li>
+    <li>Don’t exploit shop or job systems unfairly.</li>
+    <li>Bedrock players should use real usernames.</li>
+    <li>Use /msg and teleport commands responsibly.</li>
+  </ol>
 
-    <section id="plugins">
-      <h2>🔌 Plugins</h2>
-      <ul>
-        <li>SkinRestorer</li>
-        <li>ViaVersion</li>
-        <li>LuckPerms</li>
-        <li>Vault</li>
-        <li>CoreProtect</li>
-        <li>OnlineTime</li>
-        <li>PicoJobs</li>
-        <li>GSit</li>
-        <li>EconomyShopGUI</li>
-        <li>BeastLib</li>
-        <li>Geyser-Spigot</li>
-        <li>ViaBackwards</li>
-        <li>EssentialsX</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 My Minecraft Server. Hosted via <a href="https://freemcserver.net">FreeMcServer.net</a></p>
-  </footer>
-
-  <script>
-    const serverIP = "mc1524209.fmcs.cloud";
-
-    async function fetchServerStatus() {
-      const res = await fetch(`https://api.mcsrvstat.us/2/${serverIP}`);
-      const data = await res.json();
-      const statusDiv = document.getElementById("server-status");
-      const playersDiv = document.getElementById("player-count");
-
-      if (!data.online) {
-        statusDiv.innerHTML = "🟥 Server is Offline";
-        playersDiv.innerHTML = "";
-      } else {
-        statusDiv.innerHTML = "🟩 Server is Online";
-        playersDiv.innerHTML = `👥 ${data.players.online}/${data.players.max} Players`;
-      }
-    }
-
-    fetchServerStatus();
-    setInterval(fetchServerStatus, 3000); // Refresh every 3 seconds
-
-    function generateLink() {
-      const username = document.getElementById("username").value.trim();
-      const linkDiv = document.getElementById("start-link");
-      if (username) {
-        linkDiv.innerHTML = `🔗 <a href="https://freemcserver.net/server/1524209/share/${username}" target="_blank">Start Server as ${username}</a>`;
-      } else {
-        linkDiv.innerHTML = "⚠️ Enter a valid username!";
-      }
-    }
-
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Copied: " + text);
-      });
-    }
-  </script>
+  <footer>© 2025 Minecraft Server | Play Fair. Build Together. Survive Better.</footer>
 </body>
 </html>
